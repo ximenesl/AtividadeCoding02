@@ -1,7 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #fdf6e3;
-    /* Uma cor pastel mais suave para combinar com gatos */
     color: #333;
     display: flex;
     justify-content: center;
@@ -38,7 +37,6 @@ h1 {
     min-height: 250px;
     max-height: 350px;
     object-fit: contain;
-    /* Para não cortar nenhuma parte do gatinho */
     background-color: #f5f5f5;
     display: block;
 }
@@ -48,7 +46,6 @@ button {
     font-size: 16px;
     font-weight: bold;
     background-color: #ff9f43;
-    /* Cor mais viva puxada pro laranja */
     color: white;
     border: none;
     border-radius: 8px;
