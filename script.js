@@ -19,54 +19,51 @@ function getFlagEmoji(countryCode) {
  */
 async function initGeolocation() {
     if (!navigator.geolocation) {
-        console.warn("Geolocalização não é suportada por este navegador.");
+        console.error("Geolocalização não é suportada por este navegador.");
         return;
     }
 
+    console.log("Solicitando geolocalização...");
+
     navigator.geolocation.getCurrentPosition(async (position) => {
         const { latitude, longitude } = position.coords;
+        console.log(`Coordenadas obtidas: ${latitude}, ${longitude}`);
         
         try {
-            // Usando API gratuita da BigDataCloud para geocodificação reversa
             const response = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=pt`);
             const data = await response.json();
             
+            console.log("Dados do país obtidos:", data);
+
             if (data.countryCode) {
                 const flag = getFlagEmoji(data.countryCode);
                 flagElement.textContent = flag;
-                flagElement.classList.add("visible");
+                console.log("Bandeira exibida:", flag);
+            } else {
+                console.warn("Código do país não encontrado na resposta da API.");
             }
         } catch (error) {
-            console.error("Erro ao obter país:", error);
+            console.error("Erro ao obter país da API:", error);
         }
     }, (error) => {
-        console.warn("Permissão de geolocalização negada ou erro:", error.message);
+        console.error("Erro de geolocalização:", error.message);
+        if (error.code === 1) {
+            alert("Por favor, permita o acesso à localização para ver a bandeira do seu país.");
+        }
     });
 }
 
 /**
- * Busca uma nova imagem de gatinho.
+ * Busca uma nova imagem de gatinho (sem alterações de estilo extras).
  */
 async function fetchCat() {
-    catImg.style.opacity = "0.4";
-    catImg.style.transform = "scale(0.96)";
-
     try {
         const response = await fetch("https://api.thecatapi.com/v1/images/search");
         const data = await response.json();
-
         catImg.src = data[0].url;
-
-        catImg.onload = () => {
-            catImg.style.opacity = "1";
-            catImg.style.transform = "scale(1)";
-        };
-
     } catch (error) {
         console.error("Erro na API de gatos:", error);
         alert("Ops! Não foi possível carregar o gatinho.");
-        catImg.style.opacity = "1";
-        catImg.style.transform = "scale(1)";
     }
 }
 
