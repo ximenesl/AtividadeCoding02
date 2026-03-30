@@ -1,12 +1,12 @@
 const CACHE_NAME = 'pussycat-v1';
 const ASSETS = [
-  '/',
+  './',
   'index.html',
   'style.css',
   'script.js',
   'manifest.json',
-  'icons/icon-192.png',
-  'icons/icon-512.png'
+  'icons/icon-192x192.png',
+  'icons/icon-512x512.png'
 ];
 
 // Instalação: Armazena o "esqueleto" do app no cache

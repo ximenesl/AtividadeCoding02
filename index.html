@@ -8,11 +8,11 @@
     
     <meta name="theme-color" content="#2563eb">
     
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json">
     
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -34,7 +34,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/ServiceWorker.js')
+                navigator.serviceWorker.register('ServiceWorker.js')
                     .then(reg => console.log('SW registrado!', reg))
                     .catch(err => console.error('Erro no SW:', err));
             });
