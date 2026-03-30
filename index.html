@@ -4,7 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de Gatos</title>
+    <title>Gatinhos Aleatórios</title>
+    
+    <meta name="theme-color" content="#2563eb">
+    
+    <link rel="manifest" href="/manifest.json">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,13 +23,23 @@
         <h1>Gatinho Aleatório</h1>
 
         <div class="card">
-            <img id="cat-img" src="" alt="Um gato fofinho">
+            <img id="cat-img" src="https://via.placeholder.com/300" alt="Um gato fofinho">
         </div>
 
         <button onclick="fetchCat()">Mostrar outro Gato</button>
     </div>
 
     <script src="script.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/ServiceWorker.js')
+                    .then(reg => console.log('SW registrado!', reg))
+                    .catch(err => console.error('Erro no SW:', err));
+            });
+        }
+    </script>
 </body>
 
 </html>
